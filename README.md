@@ -45,15 +45,17 @@ Security is not just about passwords; it's about availability.
 
 ### 🤖 Built-in AI & RAG Engine
 - **OpenAI Integration**: Pre-wired for Chat Completions and Embeddings.
-- **RAG Service**: Retrieval-Augmented Generation logic with PDF parser support included out-of-the-box.
-- **Scalable Document Processing**: Upload, parse, and query documents with ease.
+- **RAG System**: Retrieval-Augmented Generation logic with PDF parser support.
+- **Background Processing**: High-performance task queue powered by **BullMQ**.
 
 ### 🛠️ Infrastructure & Scale
+- **Swagger Documentation**: Self-documenting API at `/api-docs`.
+- **Advanced Health Checks**: Dependency-aware system vitals (DB & Redis status).
 - **Dockerized**: Dedicated `Dockerfile` and `docker-compose.yml` for instant deployment.
 - **Multer Storage**: Multi-cloud support for **AWS S3** and **Cloudinary**.
 - **Stripe Payments**: Enterprise-ready billing and webhook integration.
-- **Notification Engine**: Multi-channel delivery for Email (Nodemailer), Slack, and SMS.
-- **Audit System**: Every critical action is tracked for compliance and security auditing.
+- **Data Export**: Built-in CSV/Excel generation utility.
+- **Audit System**: Every critical action is tracked for compliance.
 
 ---
 
