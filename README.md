@@ -13,6 +13,45 @@
 
 The goal of this repository is to solve the "spaghetti code" problem often found in growing Node.js applications. By enforcing **Separation of Concerns (SoC)** and **Layered Architecture**, NitroNode ensures that your codebase remains maintainable even as it scales to millions of users.
 
+### 📐 Architecture Diagram
+
+```mermaid
+graph TD
+    Client[Client / External API] --> Gateway[Gateway / Nginx]
+    Gateway --> Express[NitroNode Express App]
+
+    subgraph "Middleware Layer (Request Pipeline)"
+        Express --> Security[Security Headers / CORS]
+        Security --> Context[Req Context / ID Tracking]
+        Context --> Auth[JWT Auth / RBAC]
+        Auth --> IPSec[IP Guard / Rate Limiter]
+        IPSec --> Usage[Usage Tracking Middleware]
+    end
+
+    subgraph "Modular Core (Layered SOC)"
+        Usage --> Routes[V1 Routes]
+        Routes --> Controllers[Controllers - Thin]
+        Controllers --> Services[Services - Business Logic / AI]
+        Services --> Repositories[Repositories - DB Abstraction]
+        Repositories --> Models[Models - Schemas]
+    end
+
+    subgraph "Infrastructure & Integrations"
+        Services --> OpenAI[OpenAI / RAG]
+        Services --> Stripe[Stripe Payments]
+        Services --> Storage[AWS S3 / Cloudinary]
+        Services --> Queue[BullMQ Workers]
+        Queue --> Redis[(Redis Cache/Queue)]
+        Repositories --> MongoDB[(MongoDB Primary)]
+        IPSec --> Redis
+    end
+
+    subgraph "Background Tasks"
+        Cron[Node-Cron Scheduler] --> SystemCleanup[Token/IP Cleanup]
+        Cron --> usageReset[Monthly Usage Reset]
+    end
+```
+
 ### 🏗️ Why Layered Architecture?
 Most developers mix business logic with routes or controllers. NitroNode enforces a strict one-way flow:
 - **Route**: Only handles URL mapping.
